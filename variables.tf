@@ -36,7 +36,7 @@ variable "encryption_type" {
 variable "kms_key" {
   description = "The ARN of the KMS key to use when encryption_type is `KMS`. If not specified when encryption_type is `KMS`, uses a new KMS key. Otherwise, uses the default AWS managed key for ECR."
   type        = string
-  default     = "arn:aws:kms:us-east-1:123432287013:key/ab2f1c32-a923-4e57-82d3-8157b77c4075"
+  default     = ""
 }
 
 variable "scan_on_push" {
