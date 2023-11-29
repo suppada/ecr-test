@@ -4,13 +4,11 @@ variable "name" {
   type        = string
   default     = "navi-dracs-test"
 }
-
 variable "force_delete" {
   description = "If `true`, will delete the repository even if it contains images. Defaults to `false`"
   type        = bool
   default     = false
 }
-
 variable "image_tag_mutability" {
   description = "The tag mutability setting for the repository. Must be one of: `MUTABLE` or `IMMUTABLE`."
   type        = string
@@ -38,7 +36,6 @@ variable "kms_key" {
   type        = string
   default     = ""
 }
-
 variable "scan_on_push" {
   description = "Indicates whether images are scanned after being pushed to the repository (true) or not scanned (false)."
   type        = bool
@@ -74,4 +71,55 @@ variable "lifecycle_policy" {
   description = "Manages the ECR repository lifecycle policy"
   type        = string
   default     = null
+}
+
+
+#KMS
+variable "description" {
+  description = "The description to give to the key"
+  type        = string
+  default     = "The description to give to the key"
+}
+variable "deletion_window" {
+  description = "Number of days before a key actually gets deleted once it's been scheduled for deletion. Valid value between 7 and 30 days"
+  type        = number
+  default     = 7
+}
+variable "key_spec" {
+  default = "SYMMETRIC_DEFAULT"
+}
+variable "enabled" {
+  default = true
+}
+
+
+#ECS
+variable "app_name" {
+  type        = string
+  description = "Application Name"
+  default     = "navi-dracs-test"
+}
+variable "app_environment" {
+  type        = string
+  description = "Application Environment"
+  default     = "dev"
+}
+variable "aws_region" {
+  type        = string
+  description = "AWS Region"
+  default     = "us-east-1"
+}
+variable "vpc" {
+  type        = string
+  description = "vpc"
+  default     = "vpc-0b223569639ab823e"
+}
+variable "app_count" {
+  type    = number
+  default = 1
+}
+variable "subnets" {
+  type        = list(string)
+  default     = ["subnet-08cda1e5694272d27", "subnet-093e3079c5e3c5d4e"]
+  description = "List of Availability Zones (e.g. `['us-east-1a', 'us-east-1b', 'us-east-1c']`)."
 }
